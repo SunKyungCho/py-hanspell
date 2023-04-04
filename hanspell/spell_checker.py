@@ -10,7 +10,7 @@ import sys
 from collections import OrderedDict
 import xml.etree.ElementTree as ET
 
-from . import __version__
+# from . import __version__
 from .response import Checked
 from .constants import base_url
 from .constants import CheckResult
@@ -27,6 +27,7 @@ def _remove_tags(text):
     result = ''.join(ET.fromstring(text).itertext())
 
     return result
+
 
 
 def check(text):
@@ -116,3 +117,5 @@ def check(text):
     result = Checked(**result)
 
     return result
+
+
