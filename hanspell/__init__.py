@@ -8,14 +8,12 @@ if __name__ == '__main__':
         sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
         from hanspell import spell_checker
 
-        # result = spell_checker.check('')
-        # data = result.as_dict()['checked']
-
         with open("save.txt", "w") as f:
             with open('open.txt', newline='') as file:
                 reader = file.readlines()
                 for row in reader:
                     checked_text = ''
+                    row = row.replace('&', '')
                     if len(row) > 500:
                         count = len(row) / 500
                         for i in range(int(count)):
@@ -26,5 +24,6 @@ if __name__ == '__main__':
                         result = spell_checker.check(row)
                         checked_text = result.as_dict()['checked']
 
+                    print(checked_text)
                     checked_text = checked_text + '\n'
                     f.write(checked_text)
